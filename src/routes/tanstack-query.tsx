@@ -10,7 +10,7 @@ type ImageData = {
 
 export const Route = createFileRoute("/tanstack-query")({
   ssr: false,
-  component: TanStackQueryDemo,
+  component: App,
 });
 
 async function fetchImage(id: number): Promise<ImageData> {
@@ -18,7 +18,7 @@ async function fetchImage(id: number): Promise<ImageData> {
   return { id, url: `/images/${id}.jpg`, title: `Image ${id}` };
 }
 
-function TanStackQueryDemo() {
+function App() {
   const [imageId, setImageId] = useState(1);
   const { data: imageData, isPending } = useQuery<ImageData>({
     queryKey: ["imageData", imageId],
